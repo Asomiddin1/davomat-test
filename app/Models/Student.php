@@ -9,10 +9,9 @@ class Student extends Model
     protected $fillable = [
         'user_id',
         'student_id',
-        'fullaname',
+        'fullname',
         'email',
         'phone_number',
-        'group_name',
     ];
 
     public function user()
@@ -20,5 +19,13 @@ class Student extends Model
         return $this->belongsTo(User::class);
     }
 
-    
+    public function groups()
+    {
+        return $this->belongsToMany(
+            Group::class,
+            'group_student',
+            'student_id',
+            'group_id'
+        );
+    }
 }

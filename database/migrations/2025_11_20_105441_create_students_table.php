@@ -14,11 +14,15 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('group_id')
+      ->nullable()
+      ->constrained('groups')
+      ->onDelete('set null');
+
             $table->string('student_id')->unique();
-            $table->string('fullaname');
+            $table->string('fullname');
             $table->string('email')->unique();
             $table->string('phone_number')->nullable();
-            $table->string('group_name')->nullable();
             $table->timestamps();
         });
     }

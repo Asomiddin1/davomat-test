@@ -15,10 +15,10 @@
     @php
       $menuItems = [
     ['name' => 'Dashboard', 'icon' => 'squares-2x2', 'notification' => 0, 'link' => '/admin'],
-    ['name' => 'Gruhlar', 'icon' => 'user-group', 'notification' => 0, 'link' => '/groups'],
+    ['name' => 'Gruhlar', 'icon' => 'user-group', 'notification' => 0, 'link' => '/admin/groups'],
     ['name' => 'Adminlar', 'icon' => 'shield-check', 'notification' => 0, 'link' => '/admins'],
     ['name' => 'Xabarlar', 'icon' => 'chat-bubble-oval-left-ellipsis', 'notification' => 0, 'link' => '/admin-message'],
-    ['name' => 'Talaba yaratish', 'icon' => 'user-plus', 'notification' => 0, 'link' => '/create-student'],
+    ['name' => 'Talaba yaratish', 'icon' => 'user-plus', 'notification' => 0, 'link' => '/admin/create-student'],
       ];
 
       $logoutItem = ['name' => 'Chiqish', 'icon' => 'arrow-left-start-on-rectangle', 'link' => '/auth/logout'];
@@ -29,8 +29,8 @@
     <div class="flex items-center px-4 py-2 border-b border-gray-200">
       <img class="h-16 w-16 rounded-full object-cover" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/logo-design-template-35b0a3e2315d19a46c046165f315b000.jpg?ts=1592240511" alt="" />
       <div class="ml-3">
-        <p class="text-sm font-semibold text-gray-900">{{ Auth::user()->name }} Qarshiyev</p>
-        <p class="text-xs text-gray-500">ID : 2312136</p>
+        <p class="text-sm font-semibold text-gray-900">{{ Auth::user()->name }}</p>
+        <p class="text-xs text-gray-500">Adminstrator</p>
       </div>
     </div>
 
