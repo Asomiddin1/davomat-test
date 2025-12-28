@@ -51,4 +51,9 @@ Route::middleware('auth')->group(function () {
     ->name('admin.groups.addStudent');
     Route::delete('/admin/groups/{group_id}/remove-student/{student_id}', [GroupController::class, 'removeStudent'])
     ->name('admin.remove.student.from.group');
+
+    Route::put('/admin/groups/{group}', [GroupController::class, 'update'])->name('admin.groups.update');
+Route::patch('/admin/groups/{group}/status', [GroupController::class, 'status'])->name('admin.groups.status');
+Route::delete('/admin/groups/{group}', [GroupController::class, 'destroy'])->name('admin.groups.destroy');
+
 });

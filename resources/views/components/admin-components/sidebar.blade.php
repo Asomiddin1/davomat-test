@@ -2,14 +2,14 @@
   <div class="flex flex-col w-64 border-r border-gray-200">
 
     {{-- Header --}}
-    <div class="px-6 py-4 border-b border-gray-200">
+    <!-- <div class="px-6 py-4 border-b border-gray-200">
       <a href="/" class="flex items-center space-x-2">
         <img class="w-10" src="https://portfolio.jdu.uz/assets/logo-CTSg48Ew.png" alt="logo" />
         <h1 class="text-xl font-bold text-blue-600">
           JDU <span class="text-blue-600 text-lg font-normal">Admin</span>
         </h1>
       </a>
-    </div>
+    </div> -->
 
     {{-- PHP logika --}}
     @php
