@@ -9,11 +9,11 @@
 <body>
     <div class="flex h-full shadow-xl custom_bg">
         <div>
-            @include('components.student-components.sidebar-student')
+            <?php echo $__env->make('components.student-components.sidebar-student', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
         </div>
         <div>
-             <div>{{ $slot }}</div>
+             <div><?php echo e($slot); ?></div>
         </div>
     </div>
 </body>
-</html>
+</html><?php /**PATH /home/asomiddin/Desktop/davomat-2/resources/views/components/layout.blade.php ENDPATH**/ ?>
