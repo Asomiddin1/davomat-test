@@ -35,7 +35,7 @@
             </button>
         </form>
 
-        <!-- 2️⃣ STATUS -->
+        
         <form method="POST" action="<?php echo e(route('admin.groups.status', $group->id)); ?>" class="mb-4">
             <?php echo csrf_field(); ?>
             <?php echo method_field('PATCH'); ?>
@@ -60,7 +60,7 @@
             </button>
         </form>
 
-        <!-- 3️⃣ DELETE GROUP -->
+       
         <form method="POST"
               action="<?php echo e(route('admin.groups.destroy', $group->id)); ?>"
               onsubmit="return confirm('Guruhni o‘chirishga ishonchingiz komilmi?')">

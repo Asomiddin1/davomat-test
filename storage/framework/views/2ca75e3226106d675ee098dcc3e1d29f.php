@@ -30,7 +30,7 @@
       <img class="h-16 w-16 rounded-full object-cover" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/logo-design-template-35b0a3e2315d19a46c046165f315b000.jpg?ts=1592240511" alt="" />
       <div class="ml-3">
         <p class="text-sm font-semibold text-gray-900"><?php echo e(Auth::user()->name); ?></p>
-        <p class="text-xs text-gray-500">ID : 2312136</p>
+        <p class="text-xs text-gray-500">ID : Student</p>
       </div>
     </div>
 
