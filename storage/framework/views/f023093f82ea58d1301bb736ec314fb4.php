@@ -2,14 +2,14 @@
   <div class="flex flex-col w-64 border-r border-gray-200">
 
     
-    <!-- <div class="px-6 py-4 border-b border-gray-200">
+    <div class="px-6 py-4 border-b border-gray-200">
       <a href="/" class="flex items-center space-x-2">
         <img class="w-10" src="https://portfolio.jdu.uz/assets/logo-CTSg48Ew.png" alt="logo" />
         <h1 class="text-xl font-bold text-blue-600">
           JDU <span class="text-blue-600 text-lg font-normal">Admin</span>
         </h1>
       </a>
-    </div> -->
+    </div>
 
     
     <?php
@@ -30,7 +30,7 @@
       <img class="h-16 w-16 rounded-full object-cover" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/logo-design-template-35b0a3e2315d19a46c046165f315b000.jpg?ts=1592240511" alt="" />
       <div class="ml-3">
         <p class="text-sm font-semibold text-gray-900"><?php echo e(Auth::user()->name); ?></p>
-        <p class="text-xs text-gray-500">Adminstrator - infinityfree</p>
+        <p class="text-xs text-gray-500">Adminstrator</p>
       </div>
     </div>
 
