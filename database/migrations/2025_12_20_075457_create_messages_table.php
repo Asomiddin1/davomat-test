@@ -12,8 +12,14 @@
         public function up(): void
         {
             Schema::create('messages', function (Blueprint $table) {
-                $table->id();
-                $table->timestamps();
+              $table->id();
+    $table->string('title');
+    $table->text('body');
+    $table->foreignId('sender_id')->constrained('users')->cascadeOnDelete();
+    $table->string('target_type'); // student/group/all
+    $table->unsignedBigInteger('target_id')->nullable();
+    $table->boolean('is_read')->default(false);
+    $table->timestamps();
             });
         }
 

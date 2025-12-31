@@ -7,6 +7,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminStudentController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\AdminMessageController;
 
 // 🔹 Root sahifa
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -33,6 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/plans', [StudentController::class, 'plans'])->name('student.plans');
     Route::get('/message', [StudentController::class, 'message'])->name('student.message');
     Route::get('/pomidor', [StudentController::class, 'pomidor'])->name('student.pomidor');
+
+
     // admin sahifalari
     Route::get('/admins', [AdminController::class, 'admins'])->name('admin.admins');
     Route::get('/admin-message', [AdminController::class, 'adminMessage'])->name('admin.message');
@@ -51,9 +54,19 @@ Route::middleware('auth')->group(function () {
     ->name('admin.groups.addStudent');
     Route::delete('/admin/groups/{group_id}/remove-student/{student_id}', [GroupController::class, 'removeStudent'])
     ->name('admin.remove.student.from.group');
-
-    Route::put('/admin/groups/{group}', [GroupController::class, 'update'])->name('admin.groups.update');
+ Route::put('/admin/groups/{group}', [GroupController::class, 'update'])->name('admin.groups.update');
 Route::patch('/admin/groups/{group}/status', [GroupController::class, 'status'])->name('admin.groups.status');
 Route::delete('/admin/groups/{group}', [GroupController::class, 'destroy'])->name('admin.groups.destroy');
 
 });
+
+// Admin Message
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('messages',[AdminMessageController::class,'index'])->name('messages.index');
+    Route::post('messages',[AdminMessageController::class,'store'])->name('messages.store');
+    Route::delete('messages/{message}',[AdminMessageController::class,'destroy'])->name('messages.destroy');
+});
+
+Route::post('/student/messages/{message}/read',
+    [StudentController::class, 'markAsRead']
+)->middleware('auth');

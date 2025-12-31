@@ -30,7 +30,12 @@ class AdminController extends Controller
         if (Auth::user()->role !== 'admin') {
             abort(403, 'Sizda bu sahifaga kirish huquqi yo‘q!');
         }
-        return view('admin.message');
+
+        $messages = \App\Models\Message::with(['sender','student','group'])->latest()->paginate(10);
+        $students = \App\Models\Student::all();
+        $groups   = \App\Models\Group::all();
+
+        return view('admin.message', compact('messages','students','groups'));
     }
 
 }

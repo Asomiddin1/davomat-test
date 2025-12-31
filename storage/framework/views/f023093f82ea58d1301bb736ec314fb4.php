@@ -43,7 +43,7 @@
         <a href="<?php echo e($item['link']); ?>"
            class="group flex items-center px-4 py-2 text-sm font-medium rounded-md relative mb-2
            <?php echo e($isActive ? 'bg-blue-500 text-white' : 'text-gray-700 bg-gray-200 hover:bg-gray-300'); ?>">
-           
+
           <?php if (isset($component)) { $__componentOriginal511d4862ff04963c3c16115c05a86a9d = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal511d4862ff04963c3c16115c05a86a9d = $attributes; } ?>
 <?php $component = Illuminate\View\DynamicComponent::resolve(['component' => 'heroicon-o-' . $item['icon']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>

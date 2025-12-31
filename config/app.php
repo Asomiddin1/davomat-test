@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+   'timezone' => 'Asia/Tashkent',  // yoki env('APP_TIMEZONE', 'UTC')
 
     /*
     |--------------------------------------------------------------------------

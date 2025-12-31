@@ -43,7 +43,7 @@
         <a href="{{ $item['link'] }}"
            class="group flex items-center px-4 py-2 text-sm font-medium rounded-md relative mb-2
            {{ $isActive ? 'bg-blue-500 text-white' : 'text-gray-700 bg-gray-200 hover:bg-gray-300' }}">
-           
+
           <x-dynamic-component :component="'heroicon-o-' . $item['icon']" class="w-6 h-6 mr-3 {{ $isActive ? 'text-white' : 'text-gray-400 group-hover:text-gray-500' }}" />
 
           {{ $item['name'] }}
