@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Message;
+use App\Models\Lesson;
 
 class StudentController extends Controller
 {
@@ -22,7 +24,7 @@ class StudentController extends Controller
      */
     public function message()
     {
-        $user = auth()->user();
+        $user = Auth::user();
         $student = $user->student;
 
         $studentId = $student->id;
@@ -46,12 +48,11 @@ class StudentController extends Controller
     }
 
     /**
-     * ✅ Mark message as read (AJAX)
+     * ✅ Mark message as read
      */
     public function markAsRead(Message $message)
     {
-        $user = auth()->user();
-        $student = $user->student;
+        $student = Auth::user()->student;
 
         $studentId = $student->id;
         $groupIds  = $student->groups->pluck('id')->toArray();
@@ -62,9 +63,7 @@ class StudentController extends Controller
             ($message->target_type === 'group' && in_array($message->target_id, $groupIds));
 
         if ($isRecipient && !$message->is_read) {
-            $message->update([
-                'is_read' => true,
-            ]);
+            $message->update(['is_read' => true]);
         }
 
         return response()->json(['success' => true]);
@@ -74,4 +73,37 @@ class StudentController extends Controller
     {
         return view('student.pomidor');
     }
+
+    /**
+     * 📅 STUDENT DARS JADVALI
+     */
+ public function lessons(Request $request)
+{
+    $user = Auth::user();
+    $student = $user->student;
+
+    // 1. O'zbekcha lotin alifbosini o'rnatish
+    \Carbon\Carbon::setLocale('uz-latn'); 
+
+    $date = $request->get('date', now()->format('Y-m-d'));
+    $selectedDate = \Carbon\Carbon::parse($date);
+
+    // 2. Haftani dushanbadan boshlab hisoblash
+    $startOfWeek = $selectedDate->copy()->startOfWeek(\Carbon\Carbon::MONDAY);
+    
+    $weekDays = [];
+    for ($i = 0; $i < 7; $i++) {
+        $weekDays[] = $startOfWeek->copy()->addDays($i);
+    }
+
+    $groupIds = $student->groups->pluck('id')->toArray();
+
+    $lessons = Lesson::with(['teacher', 'subject', 'group'])
+        ->whereIn('group_id', $groupIds)
+        ->whereDate('lesson_date', $selectedDate)
+        ->orderBy('start_time')
+        ->get();
+
+    return view('student.welcome', compact('lessons', 'weekDays', 'selectedDate'));
+}
 }

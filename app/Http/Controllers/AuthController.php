@@ -77,7 +77,7 @@ class AuthController extends Controller
     }
 
     auth()->login($user);
-    return redirect('/admin');
+    return redirect('/admin/dashboard');
 }
 
 }

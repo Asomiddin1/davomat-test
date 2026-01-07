@@ -1,9 +1,45 @@
-<?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php if (isset($component)) { $__componentOriginalc8c9fd5d7827a77a31381de67195f0c3 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalc8c9fd5d7827a77a31381de67195f0c3 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.layouts.admin','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('layouts.admin'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
     [x-cloak] { display: none !important; }
+
+    /* Scrollbar styling for content */
     .custom-scrollbar::-webkit-scrollbar { width: 6px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
@@ -19,12 +55,9 @@
         target_id: '', 
         target_name: '' 
      }">
+    <!-- CONTENT -->
+    <div class="flex-1 h-screen overflow-y-auto p-8 custom-scrollbar">
 
-    <div class="w-64 flex-shrink-0">
-        <?php echo $__env->make('components.admin-components.sidebar', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    </div>
-
-    <div class="flex-1 p-8">
         <div class="flex justify-between items-start mb-8">
             <div>
                 <h1 class="text-2xl font-semibold text-[#343a40]">Xabarlar</h1>
@@ -89,35 +122,30 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
 
-        <div class="space-y-4">
-    <?php $__empty_1 = true; $__currentLoopData = $messages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $msg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-        
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-        <div class="bg-white border border-gray-100 rounded-[24px] p-12
-                    text-center shadow-sm">
-            <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center
-                        rounded-full bg-gray-100 text-gray-400">
-                <i data-lucide="mail-x" class="w-10 h-10"></i>
-            </div>
+        <?php $__empty_1 = true; $__currentLoopData = $messages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $msg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+            
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+            <div class="bg-white border border-gray-100 rounded-[24px] p-12
+                        text-center shadow-sm">
+                <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center
+                            rounded-full bg-gray-100 text-gray-400">
+                    <i data-lucide="mail-x" class="w-10 h-10"></i>
+                </div>
 
-            <h3 class="text-xl font-semibold text-gray-700">
-                Hozircha xabarlar yo‘q
-            </h3>
-            <p class="text-gray-500 mt-2">
-                Yangi xabar yuborilganda shu yerda ko‘rinadi
-            </p>
-        </div>
-    <?php endif; ?>
-</div>
+                <h3 class="text-xl font-semibold text-gray-700">
+                    Hozircha xabarlar yo‘q
+                </h3>
+                <p class="text-gray-500 mt-2">
+                    Yangi xabar yuborilganda shu yerda ko‘rinadi
+                </p>
+            </div>
+        <?php endif; ?>
 
         <div class="mt-8">
             <?php echo e($messages->links()); ?>
 
         </div>
     </div>
-
-    
-
 
     <!-- MODAL FORM (Yuborish) -->
     <div x-show="openModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -236,4 +264,14 @@
         lucide.createIcons();
     });
 </script>
-<?php /**PATH /home/asomiddin/Desktop/davomat-2/resources/views/admin/message.blade.php ENDPATH**/ ?>
+
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalc8c9fd5d7827a77a31381de67195f0c3)): ?>
+<?php $attributes = $__attributesOriginalc8c9fd5d7827a77a31381de67195f0c3; ?>
+<?php unset($__attributesOriginalc8c9fd5d7827a77a31381de67195f0c3); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc8c9fd5d7827a77a31381de67195f0c3)): ?>
+<?php $component = $__componentOriginalc8c9fd5d7827a77a31381de67195f0c3; ?>
+<?php unset($__componentOriginalc8c9fd5d7827a77a31381de67195f0c3); ?>
+<?php endif; ?><?php /**PATH /home/asomiddin/Desktop/davomat-2/resources/views/admin/message.blade.php ENDPATH**/ ?>

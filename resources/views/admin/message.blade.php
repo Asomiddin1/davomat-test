@@ -1,9 +1,36 @@
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<x-layouts.admin>
+
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
     [x-cloak] { display: none !important; }
+
+    /* Scrollbar styling for content */
     .custom-scrollbar::-webkit-scrollbar { width: 6px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
@@ -19,12 +46,9 @@
         target_id: '', 
         target_name: '' 
      }">
+    <!-- CONTENT -->
+    <div class="flex-1 h-screen overflow-y-auto p-8 custom-scrollbar">
 
-    <div class="w-64 flex-shrink-0">
-        @include('components.admin-components.sidebar')
-    </div>
-
-    <div class="flex-1 p-8">
         <div class="flex justify-between items-start mb-8">
             <div>
                 <h1 class="text-2xl font-semibold text-[#343a40]">Xabarlar</h1>
@@ -85,34 +109,29 @@
             @endforeach
         </div>
 
-        <div class="space-y-4">
-    @forelse($messages as $msg)
-        {{-- sizning card --}}
-    @empty
-        <div class="bg-white border border-gray-100 rounded-[24px] p-12
-                    text-center shadow-sm">
-            <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center
-                        rounded-full bg-gray-100 text-gray-400">
-                <i data-lucide="mail-x" class="w-10 h-10"></i>
-            </div>
+        @forelse($messages as $msg)
+            {{-- sizning card --}}
+        @empty
+            <div class="bg-white border border-gray-100 rounded-[24px] p-12
+                        text-center shadow-sm">
+                <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center
+                            rounded-full bg-gray-100 text-gray-400">
+                    <i data-lucide="mail-x" class="w-10 h-10"></i>
+                </div>
 
-            <h3 class="text-xl font-semibold text-gray-700">
-                Hozircha xabarlar yo‘q
-            </h3>
-            <p class="text-gray-500 mt-2">
-                Yangi xabar yuborilganda shu yerda ko‘rinadi
-            </p>
-        </div>
-    @endforelse
-</div>
+                <h3 class="text-xl font-semibold text-gray-700">
+                    Hozircha xabarlar yo‘q
+                </h3>
+                <p class="text-gray-500 mt-2">
+                    Yangi xabar yuborilganda shu yerda ko‘rinadi
+                </p>
+            </div>
+        @endforelse
 
         <div class="mt-8">
             {{ $messages->links() }}
         </div>
     </div>
-
-    
-
 
     <!-- MODAL FORM (Yuborish) -->
     <div x-show="openModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -231,3 +250,5 @@
         lucide.createIcons();
     });
 </script>
+
+</x-layouts.admin>

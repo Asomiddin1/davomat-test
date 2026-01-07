@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'status', 'type'];
 
     public function students()
     {
@@ -16,5 +16,10 @@ class Group extends Model
             'group_id',
             'student_id'
         );
+    }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
     }
 }

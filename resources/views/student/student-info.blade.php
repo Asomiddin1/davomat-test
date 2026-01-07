@@ -1,3 +1,3 @@
-<x-layout>
+<x-layouts.app>
     <h1>Talaba maʼlumotlari</h1>
-</x-layout>
+</x-layouts.app>

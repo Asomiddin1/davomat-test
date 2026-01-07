@@ -15,7 +15,7 @@ return new class extends Migration
        $table->id();
        $table->string('name'); // group nomi
        $table->enum('status', ['active', 'inactive'])->default('active'); // group holati
-       $table->enum('type', ['JAPANESE', 'IT', 'COWORK', 'PARTNER', 'WLU' , 'EMPLOYABILITY'])->default('JAPANESE'); // group darajasi
+       $table->enum('type', ['JAPANESE', 'IT', 'COWORK', 'PARTNER', 'WLU' , 'EMPLOYABILITY']);
        $table->timestamps();
     });
     }

@@ -27,7 +27,7 @@
     <div class="px-6 py-4 border-b border-gray-200">
       <a href="/" class="flex items-center space-x-2">
         <img class="w-10" src="https://portfolio.jdu.uz/assets/logo-CTSg48Ew.png" alt="logo" />
-        <h1 class="text-xl font-bold text-blue-592">
+        <h1 class="text-xl font-bold text-blue-500">
           JDU <span class="text-blue-600 text-lg font-normal">Student</span>
         </h1>
       </a>
@@ -36,7 +36,7 @@
     {{-- MENU LOGIC --}}
     @php
       $menuItems = [
-        ['name' => 'Dars jadvali', 'icon' => 'calendar-days', 'notification' => 0, 'link' => '/dars-jadvali'],
+        ['name' => 'Dars jadvali', 'icon' => 'calendar-days', 'notification' => 0, 'link' => '/lessons'],
         ['name' => 'Talaba maʼlumotlari', 'icon' => 'user', 'notification' => 0, 'link' => '/info'],
         ['name' => 'Rejalashtirish', 'icon' => 'pencil-square', 'notification' => 0, 'link' => '/plans'],
         [

@@ -8,6 +8,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminStudentController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\AdminMessageController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\SubjectController;
 
 // 🔹 Root sahifa
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -25,8 +28,9 @@ Route::get('/auth/logout', [AuthController::class, 'logout'])->name('logout');
 
 // 🧑‍💼 Dashboardlar
 Route::middleware('auth')->group(function () {
-    Route::get('/admin', [HomeController::class, 'adminDashboard'])->name('admin.dashboard');
-    Route::get('/dars-jadvali', [HomeController::class, 'studentDashboard'])->name('student.dashboard');
+    Route::get('/admin/dashboard', [HomeController::class, 'adminDashboard'])->name('admin.dashboard');
+    Route::get('/lessons', [StudentController::class, 'lessons'])
+        ->name('student.dashboard');
     Route::get('/parent', [HomeController::class, 'parentDashboard'])->name('parent.dashboard');
 
     // 🧑‍🎓 Studentga oid sahifalar
@@ -38,7 +42,7 @@ Route::middleware('auth')->group(function () {
 
     // admin sahifalari
     Route::get('/admins', [AdminController::class, 'admins'])->name('admin.admins');
-    Route::get('/admin-message', [AdminController::class, 'adminMessage'])->name('admin.message');
+    Route::get('/admin/message', [AdminController::class, 'adminMessage'])->name('admin.message');
     // srudent crud
     Route::get('/admin/create-student', [AdminStudentController::class, 'createStudent'])->name('admin.create-student');
     Route::post('/admin/create-student', [AdminStudentController::class, 'createStudentUser'])->name('admin.create.student.post');
@@ -54,9 +58,23 @@ Route::middleware('auth')->group(function () {
     ->name('admin.groups.addStudent');
     Route::delete('/admin/groups/{group_id}/remove-student/{student_id}', [GroupController::class, 'removeStudent'])
     ->name('admin.remove.student.from.group');
- Route::put('/admin/groups/{group}', [GroupController::class, 'update'])->name('admin.groups.update');
-Route::patch('/admin/groups/{group}/status', [GroupController::class, 'status'])->name('admin.groups.status');
-Route::delete('/admin/groups/{group}', [GroupController::class, 'destroy'])->name('admin.groups.destroy');
+    Route::put('/admin/groups/{group}', [GroupController::class, 'update'])->name('admin.groups.update');
+    Route::patch('/admin/groups/{group}/status', [GroupController::class, 'status'])->name('admin.groups.status');
+    Route::delete('/admin/groups/{group}', [GroupController::class, 'destroy'])->name('admin.groups.destroy');
+    // Jadval Admin
+
+   Route::resource('admin/lessons', LessonController::class)
+    ->only(['index', 'store', 'destroy'])
+    ->names('lessons');
+
+   // teachers 
+   Route::resource('/admin/teachers', TeacherController::class);
+   Route::resource('admin/subjects', SubjectController::class)
+    ->only(['index', 'store', 'destroy'])
+    ->names('subjects');
+
+    
+
 
 });
 
@@ -70,3 +88,4 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 Route::post('/student/messages/{message}/read',
     [StudentController::class, 'markAsRead']
 )->middleware('auth');
+

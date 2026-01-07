@@ -1,9 +1,4 @@
-@vite(['resources/css/app.css', 'resources/js/app.js'])
-<div class="flex custom_bg">
-    <div>
-        @include('components.admin-components.sidebar')
-    </div>
-    <div>
-        <h1>Adminlar</h1>
-    </div>
-</div>
+<x-layouts.admin>
+    <h1>Adminlar ro'yxati</h1>
+   
+</x-layouts.admin>

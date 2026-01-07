@@ -14,10 +14,13 @@
     
     <?php
       $menuItems = [
-    ['name' => 'Dashboard', 'icon' => 'squares-2x2', 'notification' => 0, 'link' => '/admin'],
+    ['name' => 'Dashboard', 'icon' => 'squares-2x2', 'notification' => 0, 'link' => '/admin/dashboard'],
+    ['name' => 'Dars jadvali', 'icon' => 'calendar-days', 'notification' => 0, 'link' => '/admin/lessons'],
+    ['name' => "O'qituvchilar", 'icon' => 'calendar-days', 'notification' => 0, 'link' => '/admin/teachers'],
+    ['name' => 'Fanlar', 'icon' => 'calendar-days', 'notification' => 0, 'link' => '/admin/subjects'],
     ['name' => 'Gruhlar', 'icon' => 'user-group', 'notification' => 0, 'link' => '/admin/groups'],
     ['name' => 'Adminlar', 'icon' => 'shield-check', 'notification' => 0, 'link' => '/admins'],
-    ['name' => 'Xabarlar', 'icon' => 'chat-bubble-oval-left-ellipsis', 'notification' => 0, 'link' => '/admin-message'],
+    ['name' => 'Xabarlar', 'icon' => 'chat-bubble-oval-left-ellipsis', 'notification' => 0, 'link' => '/admin/message'],
     ['name' => 'Talaba yaratish', 'icon' => 'user-plus', 'notification' => 0, 'link' => '/admin/create-student'],
       ];
 
