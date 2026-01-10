@@ -161,5 +161,4 @@ unset($__errorArgs, $__bag); ?>
         });
     </script>
 </body>
-</html>
-<?php /**PATH /home/asomiddin/Desktop/davomat-2/resources/views/auth/login.blade.php ENDPATH**/ ?>
+</html><?php /**PATH /home/asomiddin/Desktop/davomat-2/resources/views/auth/login.blade.php ENDPATH**/ ?>

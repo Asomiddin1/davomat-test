@@ -14,7 +14,7 @@ class LessonController extends Controller
     // List page
     public function index()
     {
-        $schedules = Lesson::with(['group', 'teacher', 'subject'])->get();
+        $schedules = Lesson::with(['group', 'teacher', 'subject'])->latest()->get();
         $groups    = Group::all();
         $teachers  = Teacher::all();
         $subjects  = Subject::all();

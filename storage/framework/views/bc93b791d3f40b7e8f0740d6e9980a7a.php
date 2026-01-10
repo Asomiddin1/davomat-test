@@ -1,1 +1,0 @@
-<?php /**PATH /home/asomiddin/Desktop/davomat-2/resources/views/components/layout.blade.php ENDPATH**/ ?>

@@ -1,11 +1,8 @@
-@vite(['resources/css/app.css', 'resources/js/app.js'])
-{!! ToastMagic::styles() !!}
-
-<div class="flex min-h-screen bg-gray-50">
-    @include('components.admin-components.sidebar')
+<x-layouts.admin>
 
     <div class="w-full h-screen overflow-y-auto p-6">
         {!! ToastMagic::scripts() !!}
+        {!! ToastMagic::styles() !!}
 
         <!-- Toast xabarlari -->
         @if(session('success'))
@@ -349,3 +346,5 @@
         background: #a8a8a8;
     }
 </style>
+
+</x-layouts.admin>

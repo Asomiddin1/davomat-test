@@ -9,10 +9,16 @@ use App\Models\Lesson;
 
 class StudentController extends Controller
 {
-    public function studentInfo()
-    {
-        return view('student.student-info');
+   public function studentInfo()
+{
+    $student = auth()->user()->student()->with('groups')->first();
+
+    if (!$student) {
+        return redirect()->back()->with('error', 'Talaba ma’lumotlari topilmadi.');
     }
+
+    return view('student.student-info', compact('student'));
+}
 
     public function plans()
     {

@@ -87,7 +87,7 @@
                             </div>
 
                             <p class="mt-3 md:absolute md:bottom-5 md:right-6 text-[9px] md:text-[11px] font-black text-slate-300 uppercase tracking-widest md:text-right">
-                                {{ $lesson->teacher->name ?? 'Noma\'lum' }}
+                                {{ $lesson->teacher->full_name ?? 'Noma\'lum' }}
                             </p>
                         </div>
                     </div>
