@@ -47,6 +47,13 @@ class AdminMessageController extends Controller
             'target_id'   => $data['target_type'] === 'all' ? null : $data['target_id'],
             'is_read'     => false,
         ]);
+         // 4️⃣ EMAIL JO'NATISH (YANGI QISM)
+        try {
+            Mail::to($user->email)->send(new StudentCreatedMail($user, $rawPassword));
+        } catch (\Exception $e) {
+            // Agar internet yo'q bo'lsa yoki SMTP xato bersa, kod to'xtab qolmasligi uchun
+            ToastMagic::error('Talaba yaratildi, lekin email ketmadi: ' . $e->getMessage());
+        }
 
         return redirect()->back()->with('success','Xabar yuborildi');
     }

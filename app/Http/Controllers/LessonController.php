@@ -12,16 +12,28 @@ use Devrabiul\ToastMagic\Facades\ToastMagic;
 class LessonController extends Controller
 {
     // List page
-    public function index()
-    {
-        $schedules = Lesson::with(['group', 'teacher', 'subject'])->latest()->get();
-        $groups    = Group::all();
-        $teachers  = Teacher::all();
-        $subjects  = Subject::all();
+   public function index(Request $request)
+{
+    // 1. Forma uchun kerakli ma'lumotlar
+    $groups = Group::all();
+    $subjects = Subject::all();
+    $teachers = Teacher::all();
 
-        return view('admin.lessons.index', compact('schedules', 'groups', 'teachers', 'subjects'));
+    // 2. Dars jadvallarini olish (Queryni boshlaymiz)
+    $query = Lesson::with(['group', 'subject', 'teacher'])
+        ->orderBy('lesson_date', 'desc') // Eng yangi sanalar yuqorida
+        ->orderBy('start_time', 'asc');
+
+    // 3. AGAR filterda guruh tanlangan bo'lsa, faqat o'shani olamiz
+    if ($request->has('group_id') && $request->group_id != '') {
+        $query->where('group_id', $request->group_id);
     }
 
+    // 4. Natijani olamiz
+    $schedules = $query->get();
+
+    return view('admin.lessons.index', compact('groups', 'subjects', 'teachers', 'schedules'));
+}
     // Create
     public function store(Request $request)
     {

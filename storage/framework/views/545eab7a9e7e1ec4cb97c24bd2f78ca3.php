@@ -19,16 +19,17 @@
     <div class="flex h-screen overflow-hidden shadow-xl custom_bg flex-col md:flex-row">
         
         <div class="block md:hidden flex-shrink-0 bg-white border-b border-gray-100 w-full">
-            @include('components.student-components.navbar-student')
+            <?php echo $__env->make('components.student-components.navbar-student', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
         </div>
 
         <div class="hidden md:flex h-full flex-shrink-0 border-r border-gray-100 bg-white">
-            @include('components.student-components.sidebar-student')
+            <?php echo $__env->make('components.student-components.sidebar-student', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
         </div>
 
         <div class="flex-1 h-full overflow-y-auto overflow-x-hidden">
              <main class="min-h-full">
-                {{ $slot }}
+                <?php echo e($slot); ?>
+
              </main>
         </div>
         
@@ -50,4 +51,4 @@
         });
     </script>
 </body>
-</html>
+</html><?php /**PATH /home/asomiddin/Desktop/davomat-2/resources/views/components/layouts/app.blade.php ENDPATH**/ ?>
